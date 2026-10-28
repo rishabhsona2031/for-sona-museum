@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff0e8">
+  <meta name="description" content="A little museum, made just for Sona.">
+  <title>For Sona — a little museum of us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Dancing+Script:wght@600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button class="sound-button" id="soundButton" type="button" aria-label="Turn music on" aria-pressed="false" title="Music"><span>♫</span></button>
+  <main id="experience" aria-live="polite">
+    <section class="page page-open active" id="openPage">
+      <p class="open-caption">someone made this, just for you</p>
+      <button class="big-heart" id="heartStart" aria-label="Tap the heart to begin"><span>♥</span></button>
+      <p class="open-after" id="openMessage" hidden>Still you. Always you.<small>— yours</small></p>
+      <div class="page-dots" aria-label="Story progress"><i class="current"></i><i></i><i></i><i></i><i></i><i></i></div>
+    </section>
+
+    <section class="page love-page" id="lovePage" aria-label="I love you">
+      <p>this one is for you…</p><h1>I Love<br>You</h1>
+    </section>
+
+    <section class="page tree-page" id="treePage">
+      <div class="floating-hearts" aria-hidden="true"></div>
+      <div class="heart-tree" aria-hidden="true"><div class="branches"></div><div class="tree-hearts"></div></div>
+      <article class="tree-note"><p>made for you, by hand</p><h2>I love you</h2><span>and every ordinary day with you</span></article>
+    </section>
+
+    <section class="page gift-page" id="giftPage">
+      <button class="gift-button" id="openGift" aria-label="Open your gift">
+        <svg viewBox="0 0 180 180" aria-hidden="true"><g fill="none" stroke="#743b50" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path fill="#ee8bab" d="M38 73h104v77H38z"/><path fill="#ffd8d9" d="M30 63h120v20H30z"/><path fill="#ef9ab0" d="M89 63c-18-3-44-13-37-27 7-13 27 1 37 27Zm3 0c18-3 44-13 37-27-7-13-27 1-37 27Z"/><path d="M90 63V48M50 94v44M130 94v44"/></g></svg>
+      </button>
+      <h2>For you, Sona.</h2><p>(tap to open)</p>
+    </section>
+
+    <section class="page roses-page" id="rosesPage">
+      <div class="rose-pattern" aria-hidden="true"></div>
+      <div class="rose-message"><p>From me to you.</p><h2>This is how much I love you.</h2>
+        <img class="couple-drawing" src="couple.png" alt="An illustrated couple sharing a sweet moment">
+      </div>
+    </section>
+
+    <section class="page memories-page" id="memoriesPage">
+      <div class="polaroid-wall">
+        <figure><img src="photos/temple-together.jpeg" alt="You both together at the temple"><figcaption></figcaption></figure>
+        <figure><img src="photos/night-by-the-car.jpeg" alt="A night out together"><figcaption></figcaption></figure>
+        <figure><img src="photos/close-up-smile.jpeg" alt="A happy close-up together"><figcaption></figcaption></figure>
+        <figure><img src="photos/at-home-red.jpeg" alt="A moment together at home"><figcaption></figcaption></figure>
+        <figure><img src="photos/mirror-selfie.jpeg" alt="A mirror selfie together"><figcaption></figcaption></figure>
+        <figure><img src="photos/temple-memory.jpeg" alt="Another temple memory together"><figcaption></figcaption></figure>
+        <figure><img src="photos/at-home.jpeg" alt="A relaxed moment at home"><figcaption></figcaption></figure>
+        <figure><img src="photos/close-up-together.jpeg" alt="A close-up selfie together"><figcaption></figcaption></figure>
+      </div>
+      <p class="memories-caption">See what I made for you</p>
+    </section>
+
+    <section class="page door-page" id="doorPage">
+      <div class="museum-art" id="museumArt" aria-hidden="true"></div>
+      <div class="door-intro"><span class="door-pill">♥ &nbsp; someone wanted you to know</span><p class="door-kicker">CLOSED TO EVERYONE, EXCEPT YOU.</p><h2>I made you a <em>museum.</em></h2><p class="door-rule">Knock three times. That's the rule.</p></div>
+      <button class="museum-door" id="museumDoor" aria-label="Knock on the museum door three times"><span class="door-plaque">A little love<br>lives here</span><span class="door-knocker"></span><span class="door-handle"></span></button>
+      <p class="come-in">Come in, Sona.<small>Tap the door three times</small></p>
+      <span class="knock-count" id="knockCount">♡ &nbsp;♡ &nbsp;♡</span>
+    </section>
+
+    <section class="page room-page gallery-room" id="galleryRoom">
+      <div class="room-heading"><p>ROOM 1 · THE GALLERY</p><h2>Our <em>photos</em></h2><span>Scratch each cover to uncover a memory.</span></div>
+      <div class="exhibit-frame">
+        <img id="galleryPhoto" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=90" alt="A photo waiting to be revealed">
+        <canvas id="scratchCover" aria-label="Scratch to reveal the photo"></canvas>
+        <div class="scratch-hint" id="scratchHint">✦<br>Scratch to see it<br><small>DRAG YOUR FINGER ACROSS</small></div>
+      </div>
+      <div class="exhibit-plaque"><strong id="exhibitTitle">Untitled</strong><small>EXHIBIT 1 · FROM OUR COLLECTION</small></div>
+      <div class="exhibit-nav"><button id="galleryPrev" aria-label="Previous photo">←</button><span id="galleryCount">1 / 8</span><button id="galleryNext" aria-label="Next photo">→</button></div>
+      <button class="pink-cta" data-go="puzzleRoom">Keep walking <span>→</span></button>
+      <div class="room-progress"><i class="done"></i><i></i><i></i><i></i><i></i><span>Made with ♥ at OurMoments · How it works</span></div>
+    </section>
+
+    <section class="page room-page puzzle-room" id="puzzleRoom">
+      <div class="confetti" aria-hidden="true"></div>
+      <div class="room-heading"><p>ROOM 2 · THE RESTORATION DESK</p><h2>This photo fell <em>apart.</em></h2><span>Nine pieces. You can put them together, or watch the memory return.</span></div>
+      <div class="puzzle-grid" id="puzzleGrid" aria-label="Photo puzzle"></div>
+      <div class="puzzle-stats"><span>Moves <b id="movesCount">0</b></span><span>◷ <b id="puzzleTime">0:00</b></span><button id="peekPuzzle">◉ &nbsp;Hold to peek</button></div>
+      <p class="puzzle-caption" id="puzzleCaption">Put the little moments back together, one piece at a time.</p>
+      <button class="pink-cta" data-go="letterRoom">Next room <span>→</span></button>
+      <div class="room-progress"><i class="done"></i><i class="done"></i><i></i><i></i><i></i><span>Made with ♥ at OurMoments · How it works</span></div>
+    </section>
+
+    <section class="page room-page letter-room" id="letterRoom">
+      <div class="room-heading"><p>ROOM 4 · THE READING ROOM</p><h2 id="letterHeading">A letter, sealed just for <em>you.</em></h2></div>
+      <button class="big-envelope" id="openLetter" aria-label="Tap the seal to open the letter"><span class="seal">♥</span></button>
+      <p class="envelope-hint" id="envelopeHint">Tap the seal to open it</p>
+      <article class="letter-card" id="letterCard" hidden>
+        <p>Hey love ❤️</p>
+        <p>I don't tell you this enough, but meeting you has been one of the best things that's ever happened to me.</p>
+        <p>Thank you for being patient with me, making me laugh, listening to my endless talks, and loving me even on the days I'm difficult.</p>
+        <p>No matter how busy life gets, I hope you always remember one thing... you'll always be my favorite person. 🥺</p>
+        <p>I love you more than words can ever explain. ❤️</p>
+        <p class="letter-signoff">— yours</p>
+        <div class="voice-note"><span class="voice-avatar">♥</span><button id="voicePlay" aria-label="Play voice note">▶</button><div><b>Hear my little message</b><small>0:12</small></div><input type="file" id="voiceFile" accept="audio/*" aria-label="Choose a voice note"></div>
+      </article>
+      <button class="pink-cta" id="letterContinue" data-go="promisesRoom" hidden>One last room <span>→</span></button>
+      <div class="room-progress"><i class="done"></i><i class="done"></i><i class="done"></i><i></i><i></i><span>Made with ♥ at OurMoments · How it works</span></div>
+    </section>
+
+    <section class="page room-page promises-room" id="promisesRoom">
+      <div class="confetti" aria-hidden="true"></div>
+      <div class="room-heading"><p>ROOM 5 · THE PROMISES</p><h2>Tick the ones you'll <em>hold on to.</em></h2></div>
+      <div class="promise-paper"><strong>Our Promises</strong><small>BETWEEN US</small>
+        <label><input type="checkbox"><span>Never go to bed angry</span></label>
+        <label><input type="checkbox"><span>Say the hard thing gently</span></label>
+        <label><input type="checkbox"><span>Always share the last bite</span></label>
+        <label><input type="checkbox"><span>Choose you again, every ordinary morning</span></label>
+        <label><input type="checkbox"><span>Pick you first. Every time.</span></label>
+        <div class="sealed-stamp" id="sealedStamp" hidden>SEALED<br>WITH LOVE</div>
+      </div>
+      <button class="pink-cta seal-button" id="sealPromises">Seal it with a kiss <span>♥</span></button>
+      <button class="restart-link" id="startOver">go back to the beginning ↺</button>
+      <div class="room-progress"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><span>Made with ♥ at OurMoments · How it works</span></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
+
