@@ -254,15 +254,26 @@ function openLetter() {
   }
 }
 $('#openLetter').addEventListener('click', openLetter);
-let voiceAudio = new Audio('voice-note.mp3');
+function updateVoiceDuration(audio) {
+  audio.addEventListener('loadedmetadata', () => {
+    if (!Number.isFinite(audio.duration)) return;
+    const seconds = Math.round(audio.duration);
+    $('.voice-note small').textContent = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+  }, { once: true });
+}
+let voiceAudio = new Audio('voice-note.ogg');
+voiceAudio.preload = 'metadata';
+updateVoiceDuration(voiceAudio);
 voiceAudio.addEventListener('error', () => {
   if (voiceAudio?.src && !voiceAudio.src.startsWith('blob:')) voiceAudio = null;
 });
 $('#voiceFile').addEventListener('change', (event) => {
   const file = event.target.files[0];
   if (!file) return;
-  if (voiceAudio) URL.revokeObjectURL(voiceAudio.src);
+  if (voiceAudio?.src.startsWith('blob:')) URL.revokeObjectURL(voiceAudio.src);
   voiceAudio = new Audio(URL.createObjectURL(file));
+  voiceAudio.preload = 'metadata';
+  updateVoiceDuration(voiceAudio);
   voiceAudio.addEventListener('ended', () => { $('#voicePlay').textContent = '▶'; });
   $('.voice-note b').textContent = file.name;
   $('#voicePlay').disabled = false;

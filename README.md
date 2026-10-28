@@ -14,7 +14,8 @@ A free static website built with plain HTML, CSS, and JavaScript. The sequence f
 - The recipient name **Sona** appears in `index.html`; change it there if needed.
 - The eight photos you shared are copied into `photos/` and used in both the polaroid wall and scratch-off gallery. To change the order, edit the image paths in `.polaroid-wall` and `galleryPhotos`.
 - Edit the letter and promises in `index.html` so they sound like you.
-- When you provide your tracks, place the background song in this folder as `background-music.mp3` and your voice recording as `voice-note.mp3`. The music toggle plays your song when that file exists; otherwise it plays the gentle built-in bell fallback. The voice-note button can also load a recording from the device.
+- The music toggle plays `background-music.mp3`, “Background Romantic” by leberch (Nikita Kondrashev), downloaded from [Pixabay Music](https://pixabay.com/music/modern-classical-background-romantic-309315/) under the [Pixabay Content License](https://pixabay.com/service/license-summary/). Attribution is not required; this credit is included as a courtesy. The track is two minutes long and loops. If you replace it, keep the filename `background-music.mp3`.
+- The supplied voice recording is `voice-note.ogg`. The voice-note button can also load a recording from the device.
 - Audio starts only after the visitor taps the music toggle, because browsers block music from starting on their own.
 
 ## Publish free with GitHub Pages
